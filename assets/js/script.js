@@ -63,7 +63,7 @@ $(document).ready(function () {
 document.addEventListener('visibilitychange',
     function () {
         if (document.visibilityState === "visible") {
-            document.title = "Portfolio | Guna Nalam";
+            document.title = "Portfolio | Kethamreddy Vishnu Vardhan Reddy";
             $("#favicon").attr("href", "assets/images/favicon.png");
         }
         // else {
