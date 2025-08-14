@@ -39,20 +39,25 @@ $(document).ready(function () {
 
     // <!-- emailjs to mail contact form data -->
     $("#contact-form").submit(function (event) {
-        emailjs.init("tMNqHiNeDn75Lj4Pr");
+    event.preventDefault(); // stop form from reloading the page
 
-        emailjs.sendForm('service_j81rzgw', 'template_2vxz1n7', '#contact-form')
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                document.getElementById("contact-form").reset();
-                alert("Form Submitted Successfully");
-            }, function (error) {
-                console.log('FAILED...', error);
-                alert("Form Submission Failed! Try Again");
-            });
-        event.preventDefault();
-    });
-    // <!-- emailjs to mail contact form data -->
+    emailjs.init("Q1yPzvGNSspXZiqB1"); // your public key
+
+    // set current time into a hidden input
+    let now = new Date();
+    let formattedTime = now.toLocaleString();
+    $(this).find('input[name="time"]').val(formattedTime);
+
+    emailjs.sendForm('service_jhaw6wu', 'template_5yy02ee', this)
+        .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById("contact-form").reset();
+            alert("Form Submitted Successfully");
+        }, function (error) {
+            console.log('FAILED...', error);
+            alert("Form Submission Failed! Try Again");
+        });
+});
 });
 
 // document.getElementById('contactForm').addEventListener('submit', function(event) {
